@@ -1,12 +1,11 @@
 ﻿namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
-    public class U16 
+    public class U16 : Type<ushort>
     {
-        private EnumNumberTypes _label;
-        private ushort _value;
-
-        public EnumNumberTypes Label { get => _label; set => _label = value; }
-        public ushort Value { get => _value; set => _value = value; }
+        public override string GetRustType()
+        {
+            return EnumNumberTypes.f32.ToString();
+        }
     }
 
 }

@@ -1,12 +1,11 @@
 ﻿namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
-    public class I32 
+    public class I32 : Type<int>
     {
-        private EnumNumberTypes _label;
-        private int _value;
-
-        public EnumNumberTypes Label { get => _label; set => _label = value; }
-        public int Value { get => _value; set => _value = value; }
+        public override string GetRustType()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
 }

@@ -6,7 +6,7 @@ using System;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
-    public class NumberLiteral
+    public class NumberLiteral : Type<string>
     {
 
         private string _value;
@@ -17,15 +17,16 @@ namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
         {
             _regularExpressions = new List<Regex>() {
 
-                new Regex("/^[0-9]+(_?[0-9]+_?)*$/s"),
-                new Regex("/^0x[0-9abcdef]+(_?[0-9abcdefABCDEF]+_?)*$/s"),
-                new Regex("/^0o[0-9abcdef]+(_?[0-9abcdefABCDEF]+_?)*$/s"),
-                new Regex("/^0b[01]+(_?[01]+_?)*$/s")                
+                new Regex("/^[1-9]{1}[0-9_]*(([eE]{1}[-+]?[0-9_]+)|(.[0-9_]+(([eE]{1}[-+]?)?[0-9_]+)?))?$/s"),
+                new Regex("/^0[0-9_]*(([eE]{1}[-+]?[0-9_]+)|(.[0-9_]+(([eE]{1}[-+]?)?[0-9_]+)?))?$/s"),
+                new Regex("/^0x[0-9abcdefABCDEF_]+$/s"),
+                new Regex("/^0b[01_]+$/s"),
+                new Regex("/^0o[0-7_]+$/s"),                
 
              };
         }
 
-        public string Value
+        public override string Value
         {
 
 
@@ -35,14 +36,24 @@ namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
                 _suffix = Enum.GetNames(Type.GetType("EnumNumberTypes")).ToList().FirstOrDefault(type =>
                 {
                     return value.EndsWith(type);
-                });
 
+                }) ?? string.Empty;
+
+                if (!string.IsNullOrEmpty(_suffix))
+                {
+                    value = value.Substring(0, value.IndexOf(_suffix));
+                }
                 _value = _regularExpressions.FirstOrDefault(regex =>
                 {
                     return regex.IsMatch(value);
+
                 })?.Match(value).Value + _suffix ?? throw new NumberLiteralFormatException("The number literal has not the correct format");
             }
         }
 
+        public override string GetRustType()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

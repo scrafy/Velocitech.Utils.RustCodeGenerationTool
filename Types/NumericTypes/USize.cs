@@ -4,13 +4,11 @@ using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
 
-    public class USize
+    public class USize : Type<ulong>
     {
-        private EnumNumberTypes _label;
         private ulong _value;
-
-        public EnumNumberTypes Label { get => _label; set => _label = value; }
-        public ulong Value
+        
+        public override ulong Value
         {
 
             get
@@ -29,7 +27,7 @@ namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
                     {
                         _value = (uint)value;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         throw new NumberOverflowException($"The OS architechture is 32 bits. The more higher integer the OS can manages is {uint.MaxValue}");
                     }
@@ -38,5 +36,9 @@ namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
             }
         }
 
+        public override string GetRustType()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -3,9 +3,9 @@ using System;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Exceptions
 {
-    public class NumberOverflowException : Exception
+    public class NumberFormatException : Exception
     {
-        public NumberOverflowException(string message): base(message) { }
+        public NumberFormatException(string message): base(message) { }
         
     }
 }
