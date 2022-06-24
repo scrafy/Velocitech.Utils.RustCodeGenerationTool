@@ -4,42 +4,34 @@ using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
 
-    public class ISize : Type<long>
+    internal class ISize : Type<long>
     {
 
-        private long _value;
-        
-        public override long Value
+        public ISize(string value)
         {
-
-            get
-            {
-                return _value;
-            }
-            set
-            {
+            try {
                 if (Environment.Is64BitOperatingSystem)
                 {
-                    _value = value;
+                    _value = long.Parse(value);
                 }
                 else
                 {
-                    try
-                    {
-                        _value = (int)value;
-                    }
-                    catch (Exception)
-                    {
-                        throw new NumberOverflowException($"The OS architechture is 32 bits. The more higher integer the OS can manages is {int.MaxValue} and the more lower integer that the SO can manage is {int.MinValue}");
-                    }
+                    _value = int.Parse(value);
 
                 }
             }
+            catch (Exception)
+            {
+                throw new NumberFormatException($"The value {value} can not be converted to a isize representation");
+            }
+
+            
         }
 
         public override string GetRustType()
         {
-            throw new NotImplementedException();
+            return EnumNumberTypes.isize.ToString();
         }
+
     }
 }

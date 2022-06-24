@@ -1,13 +1,11 @@
-﻿using Velocitech.Utils.RustCodeGenerationTool.Types;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Velocitech.Utils.RustCodeGenerationTool.Common;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Variables
 {
-    public abstract class Variable
+    internal abstract class Variable : Renderizable
     {
-        public abstract string RenderAsNonMutableVariable();
-        public abstract string RenderAsMutableVariable();
-
-        public abstract string RenderAsMutableReferenceType();
-
     }
 }

@@ -1,11 +1,28 @@
-﻿namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
+﻿using System;
+using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
+
+namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
-    public class U32 : Type<uint>
+    internal class U32 : Type<uint>
     {
+
+        public U32(string value)
+        {
+            try
+            {
+                _value = uint.Parse(value);
+            }
+            catch (Exception)
+            {
+                throw new NumberFormatException($"The value {value} can not be converted to a u32 representation");
+            }
+        }
+
         public override string GetRustType()
         {
-            throw new System.NotImplementedException();
+            return EnumNumberTypes.u32.ToString();
         }
+
     }
 
 }

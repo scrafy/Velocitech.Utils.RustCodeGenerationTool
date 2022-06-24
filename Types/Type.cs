@@ -1,11 +1,14 @@
-﻿namespace Velocitech.Utils.RustCodeGenerationTool.Types
+﻿using Velocitech.Utils.RustCodeGenerationTool.Common;
+
+namespace Velocitech.Utils.RustCodeGenerationTool.Types
 {
-    public abstract class Type<T>
+    internal abstract class Type<T>
     {
-        private T _value;
-        public virtual T Value { get => _value; set => _value = value; }
+        protected T _value;
+        public T Value { get => _value; }
 
         public abstract string GetRustType();
         
     }
+
 }

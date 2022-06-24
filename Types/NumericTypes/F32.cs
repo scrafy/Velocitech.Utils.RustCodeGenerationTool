@@ -9,11 +9,14 @@ namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
         {
             try
             {
-                Value = float.Parse(value);
+                if (!value.EndsWith('f'))
+                    value = value + "f";
+
+                _value = float.Parse(value);
 
             }catch(Exception)
             {
-                throw new NumberFormatException($"The value {value} can not be converted to a float representation");
+                throw new NumberFormatException($"The value {value} can not be converted to a f32 representation");
             }
         }
 
@@ -21,6 +24,7 @@ namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
         {
             return EnumNumberTypes.f32.ToString();
         }
+
     }
 
 }

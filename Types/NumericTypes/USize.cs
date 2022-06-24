@@ -4,41 +4,32 @@ using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
 
-    public class USize : Type<ulong>
+    internal class USize : Type<ulong>
     {
-        private ulong _value;
-        
-        public override ulong Value
-        {
+        public USize(string value) {
 
-            get
+            if (Environment.Is64BitOperatingSystem)
             {
-                return _value;
+                _value = ulong.Parse(value);
             }
-            set
+            else
             {
-                if (Environment.Is64BitOperatingSystem)
+                try
                 {
-                    _value = value;
+                    _value = uint.Parse(value);
                 }
-                else
+                catch (Exception)
                 {
-                    try
-                    {
-                        _value = (uint)value;
-                    }
-                    catch (Exception)
-                    {
-                        throw new NumberOverflowException($"The OS architechture is 32 bits. The more higher integer the OS can manages is {uint.MaxValue}");
-                    }
+                    throw new NumberFormatException($"The value {value} can not be converted to a usize representation");
+                }
 
-                }
             }
         }
 
         public override string GetRustType()
         {
-            throw new NotImplementedException();
+            return EnumNumberTypes.usize.ToString();
         }
+
     }
 }
