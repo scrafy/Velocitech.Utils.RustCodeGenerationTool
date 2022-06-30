@@ -1,4 +1,4 @@
-﻿namespace Velocitech.Utils.RustCodeGenerationTool.Variables.Numeric
+﻿namespace Velocitech.Utils.RustCodeGenerationTool.Renderizables.Variables.Numbers
 {
     public enum NumericVariableTypeRender
     {

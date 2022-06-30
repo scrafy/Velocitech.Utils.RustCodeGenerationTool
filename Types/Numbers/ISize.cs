@@ -1,10 +1,10 @@
 ﻿using System;
 using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 
-namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
+namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
 {
 
-    public class ISize : Type<long>
+    public class ISize : Number
     {
 
         public ISize(string value)
@@ -12,11 +12,11 @@ namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
             try {
                 if (Environment.Is64BitOperatingSystem)
                 {
-                    _value = long.Parse(value);
+                    variableType = long.Parse(value);
                 }
                 else
                 {
-                    _value = int.Parse(value);
+                    variableType = int.Parse(value);
 
                 }
             }

@@ -1,15 +1,15 @@
 ﻿using System;
 using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 
-namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
+namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
 {
-    public class U8 : Type<byte>
+    public class U8 : Number
     {
         public U8(string value)
         {
             try
             {
-                _value = byte.Parse(value);
+                variableType = byte.Parse(value);
             }
             catch (Exception)
             {

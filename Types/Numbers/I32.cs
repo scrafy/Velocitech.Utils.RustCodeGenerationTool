@@ -1,15 +1,15 @@
 ﻿using System;
 using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 
-namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
+namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
 {
-    public class I32 : Type<int>
+    public class I32 : Number
     {
         public I32(string value)
         {
             try
             {
-                _value = int.Parse(value);
+                variableType = int.Parse(value);
             }
             catch (Exception)
             {

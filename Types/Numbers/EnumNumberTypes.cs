@@ -1,4 +1,4 @@
-﻿namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
+﻿namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
 {
     public enum EnumNumberTypes
     {

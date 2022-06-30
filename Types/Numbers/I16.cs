@@ -1,16 +1,16 @@
 ﻿using System;
 using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 
-namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
+namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
 {
-    public class I16 : Type<short>
+    public class I16 : Number<short>
     {
         
         public I16(string value)
         {
             try
             {
-                _value = short.Parse(value);
+                variableType = short.Parse(value);
             }
             catch (Exception)
             {

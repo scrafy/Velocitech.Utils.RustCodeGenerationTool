@@ -1,15 +1,15 @@
 ﻿using System;
 using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 
-namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
+namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
 {
-    public class U64 : Type<ulong>
+    public class U64 : Number
     {
         public U64(string value)
         {
             try
             {
-                _value = ulong.Parse(value);
+                variableType = ulong.Parse(value);
             }
             catch (Exception)
             {

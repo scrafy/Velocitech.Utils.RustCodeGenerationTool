@@ -1,16 +1,16 @@
 ﻿using System;
 using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 
-namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
+namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
 {
-    public class U32 : Type<uint>
+    public class U32 : Number
     {
 
         public U32(string value)
         {
             try
             {
-                _value = uint.Parse(value);
+                variableType = uint.Parse(value);
             }
             catch (Exception)
             {
