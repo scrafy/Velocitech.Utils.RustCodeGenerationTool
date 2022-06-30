@@ -3,7 +3,7 @@ using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
-    internal class U16 : Type<ushort>
+    public class U16 : Type<ushort>
     {
         public U16(string value)
         {
@@ -19,7 +19,7 @@ namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 
         public override string GetRustType()
         {
-            return EnumNumberTypes.u16.ToString(); ;
+            return EnumNumberTypes.u16.ToString();
         }
 
     }

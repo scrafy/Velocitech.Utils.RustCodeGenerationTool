@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Velocitech.Utils.RustCodeGenerationTool.Variables.Numeric
+﻿namespace Velocitech.Utils.RustCodeGenerationTool.Variables.Numeric
 {
-    internal enum NumericVariableTypeRender
+    public enum NumericVariableTypeRender
     {
-        RENDER_NUMERIC_VARIABLE_MUTABLE,
-        RENDER_NUMERIC_VARIABLE_AS_INMUTABLE,
-        RENDER_NUMERIC_VARIABLE_AS_REFERENCE_INMUTABLE,
-        RENDER_NUMERIC_MUTABLE_VARIABLE_AS_REFERENCE_INMUTABLE,
-        RENDER_NUMERIC_MUTABLE_VARIABLE_AS_REFERENCE_MUTABLE
+        NUMERIC_MUTABLE_VARIABLE_AS_VALUE,
+        NUMERIC_MUTABLE_VARIABLE_AS_REFERENCE,
+        NUMERIC_MUTABLE_VARIABLE_AS_MUTABLE_REFERENCE,        
+        NUMERIC_INMUTABLE_VARIABLE_AS_VALUE,
+        NUMERIC_INMUTABLE_VARIABLE_AS_REFERENCE,
+        NUMERIC_INMUTABLE_VARIABLE_AS_MUTABLE_REFERENCE
     }
 }

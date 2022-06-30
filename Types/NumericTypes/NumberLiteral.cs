@@ -6,7 +6,7 @@ using System;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
-    internal class NumberLiteral : Type<string>
+    public class NumberLiteral : Type<string>
     {
 
         public NumberLiteral(string value)

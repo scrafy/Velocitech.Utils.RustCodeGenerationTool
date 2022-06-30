@@ -3,7 +3,7 @@ using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
-    internal class U8 : Type<byte>
+    public class U8 : Type<byte>
     {
         public U8(string value)
         {

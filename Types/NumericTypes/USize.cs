@@ -4,7 +4,7 @@ using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
 
-    internal class USize : Type<ulong>
+    public class USize : Type<ulong>
     {
         public USize(string value) {
 

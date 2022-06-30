@@ -3,7 +3,7 @@ using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
-    internal class U32 : Type<uint>
+    public class U32 : Type<uint>
     {
 
         public U32(string value)

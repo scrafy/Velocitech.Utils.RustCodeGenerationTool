@@ -3,7 +3,7 @@ using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
-    internal class I16 : Type<short>
+    public class I16 : Type<short>
     {
         
         public I16(string value)

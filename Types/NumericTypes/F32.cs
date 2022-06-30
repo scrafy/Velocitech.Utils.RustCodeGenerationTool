@@ -3,16 +3,13 @@ using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
-    internal class F32 : Type<float>
+    public class F32 : Type<float>
     {
        public F32(string value)
-        {
+       {
             try
             {
-                if (!value.EndsWith('f'))
-                    value = value + "f";
-
-                _value = float.Parse(value);
+               _value = float.Parse(value);
 
             }catch(Exception)
             {
@@ -28,3 +25,7 @@ namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
     }
 
 }
+
+
+
+

@@ -1,18 +1,17 @@
 ﻿using System;
+using Velocitech.Utils.RustCodeGenerationTool.Common;
 using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 using Velocitech.Utils.RustCodeGenerationTool.Types;
 
-
 namespace Velocitech.Utils.RustCodeGenerationTool.Variables.Numeric
 {
-    internal class NumericVariable<T> : Variable
-        where T : Type<T>
+    public class NumericVariable<T> : IRenderizable        
     {
         private string _label;
-        private T _value;
+        private Type<T> _value;
         private NumericVariableTypeRender _renderTypes;
 
-        public NumericVariable(string label, T value, NumericVariableTypeRender renderTypes)
+        public NumericVariable(string label, Type<T> value, NumericVariableTypeRender renderTypes)
         {
             if (string.IsNullOrEmpty(label)){
 
@@ -23,54 +22,63 @@ namespace Velocitech.Utils.RustCodeGenerationTool.Variables.Numeric
             _renderTypes = renderTypes;
         }       
       
-        public override string Render()
+        public string Render()
         {
-            if(_renderTypes == NumericVariableTypeRender.RENDER_NUMERIC_MUTABLE_VARIABLE_AS_REFERENCE_INMUTABLE)
+            if(_renderTypes == NumericVariableTypeRender.NUMERIC_MUTABLE_VARIABLE_AS_VALUE)
             {
-                return RenderNumericMutableVariableAsReferenceInmutable();
+                return MutableAsValue();
             }
-            if (_renderTypes == NumericVariableTypeRender.RENDER_NUMERIC_MUTABLE_VARIABLE_AS_REFERENCE_MUTABLE)
+            if (_renderTypes == NumericVariableTypeRender.NUMERIC_MUTABLE_VARIABLE_AS_REFERENCE)
             {
-                return RenderNumericMutableVariableAsReferenceMutable();
+                return MutableAsReference();
             }
-            if (_renderTypes == NumericVariableTypeRender.RENDER_NUMERIC_VARIABLE_AS_INMUTABLE)
+            if (_renderTypes == NumericVariableTypeRender.NUMERIC_MUTABLE_VARIABLE_AS_MUTABLE_REFERENCE)
             {
-                return RenderNumericVariableAsInmutable();
+                return MutableAsMutableReference();
             }
-            if (_renderTypes == NumericVariableTypeRender.RENDER_NUMERIC_VARIABLE_MUTABLE)
+            if (_renderTypes == NumericVariableTypeRender.NUMERIC_INMUTABLE_VARIABLE_AS_MUTABLE_REFERENCE)
             {
-                return RenderNumericVariableAsMutable();
+                return InmutableAsMutableReference();
             }
-            if (_renderTypes == NumericVariableTypeRender.RENDER_NUMERIC_VARIABLE_MUTABLE)
+            if (_renderTypes == NumericVariableTypeRender.NUMERIC_INMUTABLE_VARIABLE_AS_VALUE)
             {
-                return RenderNumericVariableAsMutable();
+                return InmutableAsValue();
+            }
+            if (_renderTypes == NumericVariableTypeRender.NUMERIC_INMUTABLE_VARIABLE_AS_REFERENCE)
+            {
+                return InmutableAsReference();
             }
             throw new RenderException($"The variable with name {_label} with value {_value.Value}");
         }
 
-        private string RenderNumericVariableAsMutable()
+        private string MutableAsValue()
         {
             return $"let mut {_label}:{_value.GetRustType()} = {_value.Value};";
         }
 
-        private string RenderNumericVariableAsInmutable()
+        private string MutableAsMutableReference()
         {
-            return $"let {_label}:{_value.GetRustType()} = {_value.Value};";
+            return $"let mut {_label}:&mut {_value.GetRustType()} = &mut {_value.Value};";
         }
-
-        private string RenderNumericVariableAsReferenceInmutable()
-        {
-            return $"let {_label}:&{_value.GetRustType()} = &{_value.Value};";
-        }
-
-        private string RenderNumericMutableVariableAsReferenceInmutable()
+        private string MutableAsReference()
         {
             return $"let mut {_label}:&{_value.GetRustType()} = &{_value.Value};";
         }
 
-        private string RenderNumericMutableVariableAsReferenceMutable()
+        private string InmutableAsValue()
         {
-            return $"let mut {_label}:&mut {_value.GetRustType()} = &mut {_value.Value};";
+            return $"let {_label}:{_value.GetRustType()} = {_value.Value};";
         }
+
+        private string InmutableAsReference()
+        {
+            return $"let {_label}:&{_value.GetRustType()} = &{_value.Value};";
+        }
+
+        private string InmutableAsMutableReference()
+        {
+            return $"let {_label}:&mut {_value.GetRustType()} = &mut {_value.Value};";
+        }
+
     }
 }

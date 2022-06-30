@@ -2,7 +2,6 @@
 {
     public static class CompareStringNumbers
     {
-
         public static int CompareNumbers(string x, string y)
         {
             if (x.Length > y.Length) y = y.PadLeft(x.Length, '0');

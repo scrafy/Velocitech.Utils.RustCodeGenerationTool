@@ -3,7 +3,7 @@ using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
-    internal class U64 : Type<ulong>
+    public class U64 : Type<ulong>
     {
         public U64(string value)
         {

@@ -4,7 +4,7 @@ using Velocitech.Utils.RustCodeGenerationTool.Utils;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
-    internal class U128 : Type<string>
+    public class U128 : Type<string>
     {
         private const string MAX = "340282366920938463463374607431768211455";
 

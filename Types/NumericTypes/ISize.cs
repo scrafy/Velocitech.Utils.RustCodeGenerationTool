@@ -4,7 +4,7 @@ using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 namespace Velocitech.Utils.RustCodeGenerationTool.Types.NumericTypes
 {
 
-    internal class ISize : Type<long>
+    public class ISize : Type<long>
     {
 
         public ISize(string value)
