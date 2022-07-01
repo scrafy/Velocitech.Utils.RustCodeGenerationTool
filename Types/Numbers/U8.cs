@@ -1,21 +1,13 @@
-﻿using System;
-using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
-
-namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
+﻿namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
 {
-    public class U8 : Number
+    public class U8 : Number<byte>
     {
-        public U8(string value)
+        public U8()
         {
-            try
-            {
-                variableType = byte.Parse(value);
-            }
-            catch (Exception)
-            {
-                throw new NumberFormatException($"The value {value} can not be converted to a u8 representation");
-            }
+            minValue = byte.Parse("0");
+            maxValue = byte.Parse("255");
         }
+
 
         public override string GetRustType()
         {

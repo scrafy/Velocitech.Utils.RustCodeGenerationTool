@@ -1,20 +1,11 @@
-﻿using System;
-using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
-
-namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
+﻿namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
 {
-    public class U16 : Number
+    public class U16 : Number<ushort>
     {
-        public U16(string value)
+        public U16()
         {
-            try
-            {
-                variableType = ushort.Parse(value);
-            }
-            catch (Exception)
-            {
-                throw new NumberFormatException($"The value {value} can not be converted to a u16 representation");
-            }
+            minValue = ushort.Parse("0");
+            maxValue = ushort.Parse("65535");
         }
 
         public override string GetRustType()

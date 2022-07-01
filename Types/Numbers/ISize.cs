@@ -1,31 +1,25 @@
 ﻿using System;
-using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
 {
 
-    public class ISize : Number
+    public class ISize : Number<long>
     {
 
-        public ISize(string value)
+        public ISize()
         {
-            try {
-                if (Environment.Is64BitOperatingSystem)
-                {
-                    variableType = long.Parse(value);
-                }
-                else
-                {
-                    variableType = int.Parse(value);
-
-                }
-            }
-            catch (Exception)
+            if (Environment.Is64BitOperatingSystem)
             {
-                throw new NumberFormatException($"The value {value} can not be converted to a isize representation");
+                minValue = long.Parse("-9223372036854775808");
+                maxValue = long.Parse("9223372036854775807");
+            }
+            else
+            {
+                minValue = int.Parse("-2147483648");
+                maxValue = int.Parse("2147483647");
+
             }
 
-            
         }
 
         public override string GetRustType()

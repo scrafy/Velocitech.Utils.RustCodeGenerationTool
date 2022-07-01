@@ -1,26 +1,11 @@
-﻿using System.Text.RegularExpressions;
-using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
-using Velocitech.Utils.RustCodeGenerationTool.Utils;
-
-namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
+﻿namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
 {
-    public class U128 : Number
+    public class U128 : Number<string>
     {
-        private const string MAX = "340282366920938463463374607431768211455";
-
-        public U128(string value)
+        public U128()
         {
-            value = value.Trim();
-
-            if (!Regex.Match(value, "^[0-9]+$").Success)
-
-                throw new NumberFormatException($"Invalid U128 number: {value}");
-
-            if (CompareStringNumbers.CompareNumbers(value, MAX) == 1)
-
-                throw new NumberOverflowException($"The number {value} can not be stored in an U128 Rust type. Number too big");
-
-            variableType = value;
+            maxValue = "340_282_366_920_938_463_463_374_607_431_768_211_455";
+            minValue = "0";
         }
 
         public override string GetRustType()

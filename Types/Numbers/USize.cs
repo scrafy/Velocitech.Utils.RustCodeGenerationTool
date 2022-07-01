@@ -1,27 +1,22 @@
 ﻿using System;
-using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
 {
 
-    public class USize : Number
+    public class USize : Number<ulong>
     {
-        public USize(string value) {
-
-            try
+        public USize()
+        {
+            if (Environment.Is64BitOperatingSystem)
             {
-                if (Environment.Is64BitOperatingSystem)
-                {
-                    variableType = ulong.Parse(value);
-                }
-                else
-                {
-                    variableType = uint.Parse(value);
-                }
+                minValue = ulong.Parse("0");
+                maxValue = ulong.Parse("18446744073709551615");
             }
-            catch (Exception)
+            else
             {
-                throw new NumberFormatException($"The value {value} can not be converted to a usize representation");
+                minValue = uint.Parse("0");
+                maxValue = uint.Parse("4294967295");
+
             }
 
         }

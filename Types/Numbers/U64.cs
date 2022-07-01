@@ -1,20 +1,11 @@
-﻿using System;
-using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
-
-namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
+﻿namespace Velocitech.Utils.RustCodeGenerationTool.Types.Numbers
 {
-    public class U64 : Number
+    public class U64 : Number<ulong>
     {
-        public U64(string value)
+        public U64()
         {
-            try
-            {
-                variableType = ulong.Parse(value);
-            }
-            catch (Exception)
-            {
-                throw new NumberFormatException($"The value {value} can not be converted to a u64 representation");
-            }
+            minValue = ulong.Parse("0");
+            maxValue = ulong.Parse("18446744073709551615");
         }
 
         public override string GetRustType()

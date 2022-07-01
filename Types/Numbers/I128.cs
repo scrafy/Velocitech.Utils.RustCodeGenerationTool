@@ -2,7 +2,7 @@
 {
     public class I128 : Number<string>
     {
-        public I128(string value)
+        public I128()
         {
             maxValue = "170141183460469231731687303715884105728";
             minValue = "170141183460469231731687303715884105727";
