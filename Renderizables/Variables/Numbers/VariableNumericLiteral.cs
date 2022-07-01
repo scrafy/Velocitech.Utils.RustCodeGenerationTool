@@ -8,14 +8,14 @@ using System.Collections.Generic;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Renderizables.Variables.Numbers
 {
-    public class VariableLiteral: IRenderizable
+    public class VariableNumericLiteral: IRenderizable
     {
         private string _value;
         private NumericVariableTypeRender _typeRender;
         private string _label;
        
 
-        public VariableLiteral(string label, string value, NumericVariableTypeRender typeRender )
+        public VariableNumericLiteral(string label, string value, NumericVariableTypeRender typeRender )
         {
           
             var _suffix = string.Empty;
