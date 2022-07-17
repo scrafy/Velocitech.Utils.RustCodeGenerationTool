@@ -2,7 +2,7 @@
 {
     public abstract class Type
     {
-                
+        public abstract string GetRustType();
     }
 
 }

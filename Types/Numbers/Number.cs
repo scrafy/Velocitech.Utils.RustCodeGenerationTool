@@ -6,9 +6,7 @@
         protected T maxValue;
 
         public T MinValue { get => minValue; }
-        public T MaxValue { get => maxValue; }
-
-        public abstract string GetRustType();
+        public T MaxValue { get => maxValue; }        
 
     }
 }

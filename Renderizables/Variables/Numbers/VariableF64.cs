@@ -6,7 +6,7 @@ using Velocitech.Utils.RustCodeGenerationTool.Types.Numbers;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Renderizables.Variables.Numbers
 {
-    public class VariableF64: NumericVariable<F64, double>, IRenderizable
+    public class VariableF64: NumericVariable<F64, double>, IRenderAsVariable
     {
         
         public VariableF64(string label, string value, NumericVariableTypeRender typeRender)

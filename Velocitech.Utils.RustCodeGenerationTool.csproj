@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Company>Velocitech</Company>
+    <Authors>Jose Luis Juste Martín</Authors>
+    <Description>Library for the creation and rendering of rust types</Description>
+    <PackageProjectUrl>https://github.com/scrafy/Velocitech.Nugets.Utils.RustCodeGenerationTool.git</PackageProjectUrl>
   </PropertyGroup>
 
 </Project>

@@ -15,7 +15,7 @@ namespace Velocitech.Utils.RustCodeGenerationTool.Renderizables.Variables.Number
             return variableType.GetRustType();
         }
 
-        public virtual string Render()
+        public string RenderVariable()
         {
             if (typeRender == NumericVariableTypeRender.NUMERIC_MUTABLE_VARIABLE_AS_VALUE)
             {
@@ -72,5 +72,6 @@ namespace Velocitech.Utils.RustCodeGenerationTool.Renderizables.Variables.Number
         {
             return $"let {label}:&mut {GetRustType()} = &mut {value};";
         }
+
     }
 }

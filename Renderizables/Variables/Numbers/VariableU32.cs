@@ -6,7 +6,7 @@ using Velocitech.Utils.RustCodeGenerationTool.Types.Numbers;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Renderizables.Variables.Numbers
 {
-    public class VariableU32: NumericVariable<U32, uint>, IRenderizable
+    public class VariableU32: NumericVariable<U32, uint>, IRenderAsVariable
     {
    
         public VariableU32(string label, string value, NumericVariableTypeRender typeRender)

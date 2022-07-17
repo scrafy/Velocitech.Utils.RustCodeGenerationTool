@@ -8,7 +8,7 @@ using Velocitech.Utils.RustCodeGenerationTool.Utils;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Renderizables.Variables.Numbers
 {
-    public class VariableU128: NumericVariable<U128, string>, IRenderizable
+    public class VariableU128: NumericVariable<U128, string>, IRenderAsVariable
     {
 
         public VariableU128(string label, string value, NumericVariableTypeRender typeRender)

@@ -1,6 +1,6 @@
 ﻿namespace Velocitech.Utils.RustCodeGenerationTool.Common
 {
-    public interface IRenderizable
+    public interface IRenderVariable
     {
         public string Render();
     }

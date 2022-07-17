@@ -1,12 +1,11 @@
 ﻿using System;
-using Velocitech.Utils.RustCodeGenerationTool.Common;
 using Velocitech.Utils.RustCodeGenerationTool.Exceptions;
 using Velocitech.Utils.RustCodeGenerationTool.Types.Numbers;
 
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Renderizables.Variables.Numbers
 {
-    public class VariableI16: NumericVariable<I16, short>, IRenderizable
+    public class VariableI16: NumericVariable<I16, short>, IRenderAsVariable
     {
        
         public VariableI16(string label, string value, NumericVariableTypeRender typeRender)

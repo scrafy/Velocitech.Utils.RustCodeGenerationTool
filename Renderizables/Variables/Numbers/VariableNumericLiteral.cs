@@ -5,10 +5,11 @@ using Velocitech.Utils.RustCodeGenerationTool.Types.Numbers;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using Velocitech.Utils.RustCodeGenerationTool.Types;
 
 namespace Velocitech.Utils.RustCodeGenerationTool.Renderizables.Variables.Numbers
 {
-    public class VariableNumericLiteral: IRenderizable
+    public class VariableNumericLiteral: IRenderAsType
     {
         private string _value;
         private NumericVariableTypeRender _typeRender;
@@ -61,7 +62,7 @@ namespace Velocitech.Utils.RustCodeGenerationTool.Renderizables.Variables.Number
        
         }
 
-        public string Render()
+        public string RenderAsType()
         {
             if (_typeRender == NumericVariableTypeRender.NUMERIC_MUTABLE_VARIABLE_AS_VALUE)
             {
